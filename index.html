@@ -1,8 +1,14 @@
 <html>  
 <head>
-</head>  
-<body>  
 <script type = "text/javascript">
+    function show_answer() {
+        document.getElementById("answer").style.display = "block"
+    }
+    
+    function hide_answer() {
+        document.getElementById("answer").style.display = "none"
+    }
+
     function get_next(known) {
         if( typeof get_next.hit == 'undefined' ) {
             get_next.hit = 0;
@@ -15,15 +21,31 @@
         } else {
             get_next.miss++;
         }
+        document.getElementById("result").innerHTML = "Wynik:" + (get_next.hit / (get_next.hit + get_next.miss)) * 100 + "%"
         var files = ["download.jpg", "mem-awaria.png", "przesylki-allegro-608x608.jpg"];
         var myImg = document.getElementsByClassName("myImg")[0];
         var random_image_whole_name = files[Math.floor(Math.random() * files.length)];
         var random_image_name = random_image_whole_name.split(".");
-        myImg.src = "data/" + random_image_whole_name; 
+        myImg.src = "data/" + random_image_whole_name;
+        
+        document.getElementById("answer").innerHTML = random_image_name;
+        hide_answer();
     }
+    
+
 </script>  
-<p><button onclick="get_next(1);">Dobrze</button>   <button onclick="get_next(0);">Źle</button></p>
+</head>  
+<body onload="hide_answer();">  
+<div style="display:flex; flex-direction: row; justify-content: flex-start">
+    <button onclick="get_next(1);">Dobrze</button>
+    <button onclick="get_next(0);">Źle</button>
+    <div id=result>Wynik: -%</div>
+</div>
 <p><img class="myImg" src="data/download.jpg" width="50%"></p>
+<p><button onclick="show_answer();">Pokaż odpowiedz</button> </p>
+<div id="answer">
+  This is my DIV element.
+</div>
 </body>  
 </html>  
 
