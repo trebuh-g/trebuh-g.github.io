@@ -1,15 +1,35 @@
 <html>  
-<head>  
-<script type = "text/javascript">
-    function show_image() {
-        var myImg = document.getElementsByClassName("myImg")[0];
-        myImg.src = "hackanm.gif";
-    }
-</script>  
+<head>
 </head>  
 <body>  
-<p>Click the following button to see the function in action</p>  
-<button onclick="show_image();">Add Google Logo</button>
-<img class="myImg" src="compman.gif" width="107" height="98">
+<script type = "text/javascript">
+    function get_next(known) {
+        if( typeof get_next.hit == 'undefined' ) {
+            get_next.hit = 0;
+        }
+        if( typeof get_next.miss == 'undefined' ) {
+            get_next.miss = 0;
+        }
+        if(known) {
+            get_next.hit++;
+        } else {
+            get_next.miss++;
+        }
+        var files = ["download.jpg", "mem-awaria.png", "przesylki-allegro-608x608.jpg"];
+        var myImg = document.getElementsByClassName("myImg")[0];
+        var random_image_whole_name = files[Math.floor(Math.random() * files.length)];
+        var random_image_name = random_image_whole_name.split(".");
+        myImg.src = "data/" + random_image_whole_name; 
+    }
+</script>  
+<p><button onclick="get_next(1);">Dobrze</button>   <button onclick="get_next(0);">Źle</button></p>
+<p><img class="myImg" src="data/download.jpg" width="50%"></p>
 </body>  
 </html>  
+
+
+
+
+
+
+
