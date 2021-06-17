@@ -9,6 +9,87 @@
         document.getElementById("answer").style.display = "none"
     }
 
+    function load_random_image() {
+            var files = ["./data/abstrakcjonizm geometryczny/235-Richard Paul Lohse, bez tytułu, sitodruk, 1981.jpg",
+"./data/abstrakcjonizm geometryczny/239-Josef Albers, Białoliniowy kwadrat III, litografia, 1963.jpg",
+"./data/abstrakcyjny ekspresjonizm/198-Willem de Kooning, Bez tytułu (Fale II), litografia, 1960 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/200-Robert Motherwell-Automatism-A,  litografia, 1965-66 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/201-Barnett Newman, bez tytułu, litografia,  1961.jpg",
+"./data/abstrakcyjny ekspresjonizm/202-Helen Frankenthaler, Perski ogród, litografia, 1966 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/204-Robert Rauschenberg, Automobil Tire Print,  1953 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/205-Robert Robert Rauschenberg, Połączenie, litografia, 1962 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/206-Robert Rauschenberg, Wypadek, litografia, 1963 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/207-Robert Rauschenberg, Booster, litografia i sitodruk, 181.7 x 89.3 cm, 1967 r.jpg",
+"./data/abstrakcyjny ekspresjonizm/208-Robert Rauschenberg, Shades, 1964, litografia offsetowa na plexi.Jpeg",
+"./data/abstrakcyjny ekspresjonizm/209-Robert Rauschenberg, Zapowiedż z serii Hoarfrost, litografia offsetowa  i sitodruk na tkaninie i papierowych torbach, 1974 r.jpg",
+"./data/akcjonizm wiedeński/222-Hermann Nitsch, Ostatnia wieczerza, sitodruk i olej, 1976-1979.jpg",
+"./data/brak/190-El Lissitzky, Proun I-D, litografia 21, ok. 1920 r.jpg",
+"./data/brak/191-Joseph Albers, Ponad wodą, drzeworyt, 1944 r.jpg",
+"./data/brak/199-Larry Rivers, Frank OHara, Kamienie, Litografia, 1957 r.jpg",
+"./data/brak/203-Jean Dubuffet, Pumeks,  litografia, 1958-62 r.jpg",
+"./data/brak/216-Jim Dine, Krawat, z serii To jest dziesięć użytecznych rzeczy bez których nie można być w podróży, sucha igła i gwasz, 1961 r.jpg",
+"./data/brak/221-Kiefer, bez tytułu - Ren, drzeworyt olej i collage na płótnie, 1982.jpg",
+"./data/brak/224-Georg Baselitz, Georg Baselitz, Pułapka, akwaforta, 1965.jpg",
+"./data/brak/229-Guerilla Girls, bez tytułu, sitodruk, 1985-90.jpg",
+"./data/brak/230-Art Spigelman, Mice, druk 1991.jpg",
+"./data/brak/231-H.C. Westermann, Taniec śmierci, drzeworyt (San Pedro), 1976.jpg",
+"./data/brak/237-Max Bill, bez tytułu, barwna litografia, 1938.jpg",
+"./data/brak/243-Chuck Close, Keith, 1972, mezzotinta.jpg",
+"./data/brak/243-David Rhys Jones, Spotkania 2, 2005, transfer na ceramikę.jpg",
+"./data/brak/244-Eduardo Chillida, Euskadi V, 1976, akwaforta.jpg",
+"./data/brak/246-Nicola Lopez, A Promising Tommorow, drzeworyt, 2004-5,.jpeg",
+"./data/brak/248-Thomas Kilpper, State of Control, linoleum, instalacja, 2009.jpg",
+"./data/informel/223-Arnulf Rainer, Johann Wolfgang Goethe, sucha igła i fotoakwatinta, 1982.jpg",
+"./data/konceptualizm/228-Barbara Kruger, Twoje ciało to pole walki, litograficzny plakat, 1989.jpg",
+"./data/konstruktywizm/189-Naum Gabo, Opus 3, drzeworyt, 1950 r.jpg",
+"./data/kubizm/182-Pablo Pisacco, Skromny posiłek, akwaforta, 1904 r.jpg",
+"./data/kubizm/183-Picasso, Mademoiselle Leonie siedząca w szezlongu, sucha igła, 1911 r.jpg",
+"./data/kubizm/184-Georges Braque, Fox, akwaforta i sucha igła,  1911 r.jpg",
+"./data/kubizm/185-Chagall, Dziadkowie, akwaforta i sucha igła, 3 z portfolio Moje życie, 1922 r, wyd. 1923 r.jpg",
+"./data/kubizm/186-Robert Delaunay, Wieża Eiffla, litografia, 1923 r.jpg",
+"./data/kubizm/187-Fernand Leger, ilustracja z Końca świata sfilmowanego przez anioła z Notre Dame, , 1919 r.jpg",
+"./data/kubizm/188-Fernand Leger, Kobieta trzymająca wazę, litografia, 1928 r.jpg",
+"./data/kubizm/191-Pablo Picasso, Rzeźbiarz i jego modelka ..., z Vollard Suite, akwaforta, 1933 r.jpg",
+"./data/kubizm/192-Picasso, Minotauromachia, akwaforta, 1935 r.jpg",
+"./data/kubizm/193-Georges Braque,Szary czajniczek do herbaty, litografia, 1947 r.jpg",
+"./data/kubizm/195-Fernend Leger, strona 7 z serii Cyrk, 1947-50 r.jpg",
+"./data/kubizm/196-Pablo Picasso, Kobieta w fotelu Nr 1, litografia, 1949 r.jpg",
+"./data/minimalizm/234-Ellsworth Kelly, Kalia, litografia, 1983.jpg",
+"./data/minimalizm/236-Frank Stella, Mariaż rozumu i brudu, litografia, 1967.jpg",
+"./data/minimalizm/238-Donald Judd, bez tytułu, drzeworyt, 1962.jpg",
+"./data/neoekspresjonizm/225-Lupertz, Vanitas 3, akwaforta, 1992.jpg",
+"./data/op art/240-Victor Vasarely, Narodziny, akwaforta, 1963.jpg",
+"./data/op art/241-Bridget  Riley, bez tytułu, sitodruk, lata 1960.JPG",
+"./data/popart/197-Jasper Jones, Cel, litografia, 1960.jpg",
+"./data/popart/210-Jasper Johns, 0 do 9, litografia, 1960 r.jpg",
+"./data/popart/211-Jasper Johns, 2 z 0-9, litografia,  1963 r.jpg",
+"./data/popart/211-Warhol, bez tytułu z portfolio Marilyn Monroe, jeden dziesięciu sitodruków, 1967 r.jpg",
+"./data/popart/212-Warhol, bez tytułu, jeden dziesięciu sitodruków z portfolio Krzesła elektryczne,  1971 r.jpg",
+"./data/popart/213-Jasper Johns, Scent, litografia, linoryt, drzeworyt, 1975-76 r.jpg",
+"./data/popart/213-Roy Lichtenstein, Sweet Dreams, Baby! sitodruk z portfolio z 9 sitami i jedna litografią 11 Pop Artists, Volume III, 90.5 x 65 cm, 1965, publikacja 1966 r.jpg",
+"./data/popart/214-Robert Indiana, LOVE, sitodruk,  1967 r.jpg",
+"./data/popart/215-James Rosenquist, Marilyn, litografia,  1974 r.jpg",
+"./data/popart/217-Ed Ruscha, Standard Station, sitodruk, 1966 r.jpg",
+"./data/popart/218-Eduardo Palozzi, Reality, z serii As Is When, sitodruk,  1964 r.jpg",
+"./data/popart/219-David Hockney, Portfel zaczyna być pusty, z serii Rake's Progress, akwaforta i akwatinta,  1961-62 r.jpg",
+"./data/popart/220-Richard Hamilton, Kent State,sitodruk,  1970 r.jpg",
+"./data/popart/232-Keith Haring, bez tytułu, litografia, 1982.jpg",
+"./data/popart/233-Marcel Broodthaers, Seria podpisów, sitodruk,    1969.jpg",
+"./data/popart/242-Wolf Vostell, Pomadkowy bombowiec, sitodruk i pomadki do ust, 1963.jpg",
+"./data/process art/245-Richard Serra, bez tytułu, litografia, 1973.jpg",
+"./data/sztuka społecznie zaangażowana/247-Swoon, Thalassa, linoryt, instalacja, 2011.jpg",
+"./data/transawangarda/226-Mimmo Paladino, Niemowa, akwafortsa i akwatinta.jpg",
+"./data/transawangarda/227-Sandro Chia, To the Tower, akwaforta i sucha igła, 1981.jpg"];
+        var myImg = document.getElementsByClassName("myImg")[0];
+        var random_image_whole_name = files[Math.floor(Math.random() * files.length)];
+        var random_image_name = random_image_whole_name.split("/")[2] + " - " + random_image_whole_name.split("/")[3];
+        
+        myImg.src =  random_image_whole_name;
+        
+        document.getElementById("answer").innerHTML = random_image_name.split(".")[0];
+        hide_answer();
+    }
+    
     function get_next(known) {
         if( typeof get_next.hit == 'undefined' ) {
             get_next.hit = 0;
@@ -22,20 +103,13 @@
             get_next.miss++;
         }
         document.getElementById("result").innerHTML = "Wynik:" + (get_next.hit / (get_next.hit + get_next.miss)) * 100 + "%"
-        var files = ["download.jpg", "mem-awaria.png", "przesylki-allegro-608x608.jpg"];
-        var myImg = document.getElementsByClassName("myImg")[0];
-        var random_image_whole_name = files[Math.floor(Math.random() * files.length)];
-        var random_image_name = random_image_whole_name.split(".");
-        myImg.src = "data/" + random_image_whole_name;
-        
-        document.getElementById("answer").innerHTML = random_image_name;
-        hide_answer();
+        load_random_image();
     }
     
 
 </script>  
 </head>  
-<body onload="hide_answer();">  
+<body onload="load_random_image();">  
 <div style="display:flex; flex-direction: row; justify-content: flex-start">
     <button onclick="get_next(1);">Dobrze</button>
     <button onclick="get_next(0);">Źle</button>
@@ -44,7 +118,7 @@
 <p><img class="myImg" src="data/download.jpg" width="50%"></p>
 <p><button onclick="show_answer();">Pokaż odpowiedz</button> </p>
 <div id="answer">
-  This is my DIV element.
+  ---
 </div>
 </body>  
 </html>  
