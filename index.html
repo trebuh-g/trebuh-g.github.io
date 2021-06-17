@@ -9,8 +9,28 @@
         document.getElementById("answer").style.display = "none"
     }
 
+    function shuffle(array) {
+        var i = array.length,
+            j = 0,
+            temp;
+
+        while (i--) {
+
+            j = Math.floor(Math.random() * (i+1));
+
+            // swap randomly chosen element with current element
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+
+        }
+
+        return array;
+    }
+    
     function load_random_image() {
-            var files = ["./data/abstrakcjonizm geometryczny/235-Richard Paul Lohse, bez tytułu, sitodruk, 1981.jpg",
+           
+        var files = ["./data/abstrakcjonizm geometryczny/235-Richard Paul Lohse, bez tytułu, sitodruk, 1981.jpg",
 "./data/abstrakcjonizm geometryczny/239-Josef Albers, Białoliniowy kwadrat III, litografia, 1963.jpg",
 "./data/abstrakcyjny ekspresjonizm/198-Willem de Kooning, Bez tytułu (Fale II), litografia, 1960 r.jpg",
 "./data/abstrakcyjny ekspresjonizm/200-Robert Motherwell-Automatism-A,  litografia, 1965-66 r.jpg",
@@ -80,13 +100,33 @@
 "./data/sztuka społecznie zaangażowana/247-Swoon, Thalassa, linoryt, instalacja, 2011.jpg",
 "./data/transawangarda/226-Mimmo Paladino, Niemowa, akwafortsa i akwatinta.jpg",
 "./data/transawangarda/227-Sandro Chia, To the Tower, akwaforta i sucha igła, 1981.jpg"];
+
+        if( typeof load_random_image.shuffled == 'undefined' ) {
+            load_random_image.shuffled = shuffle(files);
+        }
+        
+        if( typeof load_random_image.counter == 'undefined' ) {
+            load_random_image.counter = 0;
+        }
+
+        if (load_random_image.counter >= load_random_image.shuffled.length) 
+        {
+            document.getElementById("answer").innerHTML = "KONIEC, odswież stronę, żeby zacząć od nowa.";
+            show_answer();
+            return;
+        }
+        document.getElementById("counter").innerHTML = "Obrazek " + (load_random_image.counter + 1) + "/" + load_random_image.shuffled.length;
+        
         var myImg = document.getElementsByClassName("myImg")[0];
-        var random_image_whole_name = files[Math.floor(Math.random() * files.length)];
-        var random_image_name = random_image_whole_name.split("/")[2] + " - " + random_image_whole_name.split("/")[3];
+        var random_image_whole_name = load_random_image.shuffled[load_random_image.counter];
+        load_random_image.counter = load_random_image.counter + 1;
+        var era = random_image_whole_name.split("/")[2];
+        var description = random_image_whole_name.split("/")[3];
+        var description_without_file_name = description.substring(4, description.length-4);
         
         myImg.src =  random_image_whole_name;
         
-        document.getElementById("answer").innerHTML = random_image_name.split(".")[0];
+        document.getElementById("answer").innerHTML = era + " - " + description_without_file_name;
         hide_answer();
     }
     
@@ -102,7 +142,7 @@
         } else {
             get_next.miss++;
         }
-        document.getElementById("result").innerHTML = "Wynik:" + (get_next.hit / (get_next.hit + get_next.miss)) * 100 + "%"
+        document.getElementById("result").innerHTML = "Wynik:" + Math.round((get_next.hit / (get_next.hit + get_next.miss)) * 100) + "%"
         load_random_image();
     }
     
@@ -114,12 +154,14 @@
     <button onclick="get_next(1);">Dobrze</button>
     <button onclick="get_next(0);">Źle</button>
     <div id=result>Wynik: -%</div>
+    <button onclick="show_answer();">Pokaż odpowiedz</button>
+    <div id=counter> --- </div>
 </div>
-<p><img class="myImg" src="data/download.jpg" width="50%"></p>
-<p><button onclick="show_answer();">Pokaż odpowiedz</button> </p>
 <div id="answer">
   ---
 </div>
+<p><img class="myImg" src="data/download.jpg" width="1300"></p>
+
 </body>  
 </html>  
 
